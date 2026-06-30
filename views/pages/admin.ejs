@@ -42,17 +42,18 @@
   <h2>Статьи</h2>
   <form method="POST" action="/admin/article/add" class="admin-form add-form">
     <h3>Добавить статью</h3>
-    <input name="title" placeholder="Заголовок" required>
+    <input name="title" placeholder="Заголовок" required maxlength="200">
     <input name="image_url" placeholder="URL картинки">
     <textarea name="content" placeholder="Текст статьи"></textarea>
     <button type="submit">Добавить</button>
   </form>
-
+  
+  <!-- Остальной код для списка статей -->
   <% if (articles.length) { %>
     <h3>Список статей</h3>
     <% articles.forEach(article => { %>
       <form method="POST" action="/admin/article/edit/<%= article.id %>" class="admin-form edit-form">
-        <input name="title" value="<%= article.title %>" required>
+        <input name="title" value="<%= article.title %>" required maxlength="200">
         <input name="image_url" value="<%= article.image_url %>">
         <textarea name="content"><%= article.content %></textarea>
         <button type="submit">Сохранить</button>

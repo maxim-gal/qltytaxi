@@ -83,8 +83,14 @@ router.post('/article/delete/:id', async (req, res) => {
 router.post('/settings', async (req, res) => {
   const { about_text, contacts_text, contacts_email, about_image, contacts_image } = req.body;
   await req.db.runAsync(
-    `UPDATE settings SET about_text=?, contacts_text=?, contacts_email=?, about_image=?, contacts_image=? WHERE id=1`,
-    [about_text, contacts_text, contacts_email, about_image, contacts_image]
+    `UPDATE settings SET 
+      about_text=?, 
+      contacts_text=?, 
+      contacts_email=?, 
+      about_image=?, 
+      contacts_image=? 
+    WHERE id=1`,
+    [about_text, contacts_text, contacts_email, about_image || '', contacts_image || '']
   );
   res.redirect('/admin');
 });

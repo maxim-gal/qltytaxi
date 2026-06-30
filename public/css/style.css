@@ -113,7 +113,7 @@ a:hover {
 
 .taxi-list .col-phone {
   flex: 1.2;
-  text-align: center;          /* кнопка в центре ячейки */
+  text-align: center;
 }
 
 /* Заголовок "Телефон" – слева */
@@ -237,10 +237,13 @@ a:hover {
   font-size: 1.3rem;
 }
 
-.article-card img {
-  width: 100%;
-  border-radius: 12px;
-  margin-top: 12px;
+.article-card h2 a {
+  color: #E0E0E0;
+  text-decoration: none;
+}
+
+.article-card h2 a:hover {
+  color: #FFD700;
 }
 
 .article-full {
@@ -250,10 +253,65 @@ a:hover {
   margin-top: 24px;
 }
 
-.article-full img {
+.article-full h1 {
+  color: #FFD700;
+  margin-bottom: 20px;
+}
+
+.article-text {
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.article-text p {
+  margin-bottom: 16px;
+}
+
+/* ===== Изображения в статьях ===== */
+.article-preview {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 12px;
+  background: #0A0A0A;
+}
+
+.article-full img,
+.article-card img {
   max-width: 100%;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  display: block;
+  background: #0A0A0A;
+}
+
+.article-card .article-preview {
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.article-image-wrapper {
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
   border-radius: 12px;
   margin: 20px 0;
+  background: #0A0A0A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-image-wrapper .article-image {
+  width: 100%;
+  height: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  display: block;
 }
 
 /* ===== "О проекте" и "Контакты" ===== */
@@ -263,10 +321,31 @@ a:hover {
   padding: 32px;
   margin-top: 24px;
   font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.content-block p {
+  margin-bottom: 16px;
 }
 
 .content-block a {
   color: #FFD700;
+}
+
+.content-block a:hover {
+  color: #F59A2F;
+}
+
+.content-image {
+  max-width: 100%;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+  margin-bottom: 24px;
+  display: block;
+  background: #0A0A0A;
 }
 
 /* ===== Адаптив ===== */
@@ -277,7 +356,7 @@ a:hover {
 
   .taxi-list .list-row {
     flex-wrap: wrap;
-    gap: 12px;                 /* отступы между всеми элементами */
+    gap: 12px;
     padding: 16px 0;
   }
 
@@ -306,21 +385,304 @@ a:hover {
   }
 
   .footer-links {
-    flex-direction: row;       /* горизонтально в одну строку */
+    flex-direction: row;
     gap: 20px;
-    flex-wrap: wrap;           /* если не влезут – перенесутся, но останутся в строку */
+    flex-wrap: wrap;
     justify-content: center;
   }
 
   .footer-links a {
     font-size: 0.9rem;
   }
+
+  /* Адаптив для изображений */
+  .article-full img,
+  .article-card img {
+    max-height: 250px;
+  }
+  
+  .article-image-wrapper {
+    max-height: 250px;
+  }
+  
+  .content-image {
+    max-height: 200px;
+  }
+
+  .article-full {
+    padding: 20px;
+  }
+
+  .content-block {
+    padding: 20px;
+  }
 }
-/* ===== Изображения внутри контентных блоков ===== */
-.content-image {
-  max-width: 100%;
-  height: auto;
+
+/* ===== АДМИН-ПАНЕЛЬ ===== */
+
+/* Общие стили для форм в админке */
+.admin-form {
+  background: #1A1A1A;
   border-radius: 16px;
-  margin-bottom: 24px;
+  padding: 24px;
+  margin: 16px 0;
+  border: 1px solid #2C2C2C;
+}
+
+.admin-form h3 {
+  color: #FFD700;
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+}
+
+.admin-form input,
+.admin-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  margin: 6px 0;
+  background: #0A0A0A;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #E0E0E0;
+  font-size: 14px;
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  outline: none;
+  border-color: #FFD700;
+}
+
+.admin-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Решение проблемы с длинными заголовками */
+.admin-form input[name="title"] {
+  font-weight: 500;
+  font-size: 15px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Для полей ввода в списке статей */
+.admin-form .edit-form input[name="title"] {
+  background: #0A0A0A;
+  border-color: #2C2C2C;
+}
+
+.admin-form .edit-form input[name="title"]:focus {
+  border-color: #FFD700;
+}
+
+/* Кнопки в админке */
+.admin-form button {
+  background: #FFD700;
+  color: #000000;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 8px 8px 0 0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.admin-form button:hover {
+  background: #F59A2F;
+}
+
+.btn-delete {
+  background: #DC3545 !important;
+  color: white !important;
+}
+
+.btn-delete:hover {
+  background: #C82333 !important;
+}
+
+/* Форма "Добавить" - выделяем */
+.add-form {
+  border: 2px dashed #FFD70033;
+  background: #0A0A0A;
+}
+
+/* Форма "Редактировать" */
+.edit-form {
+  margin: 12px 0;
+  padding: 16px 20px;
+}
+
+/* Группа кнопок в форме редактирования */
+.edit-form .form-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+/* Стили для секций в админке */
+section {
+  margin: 40px 0;
+}
+
+section h2 {
+  color: #FFD700;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #222;
+  padding-bottom: 12px;
+}
+
+section h3 {
+  color: #FFD700;
+  font-size: 1.1rem;
+  margin: 16px 0;
+}
+
+/* Ссылка "Выйти" */
+a[href="/admin/logout"] {
+  display: inline-block;
+  background: #DC3545;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 40px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  transition: background 0.2s;
+}
+
+a[href="/admin/logout"]:hover {
+  background: #C82333;
+  color: white;
+}
+
+/* ===== АДАПТИВ ДЛЯ АДМИНКИ ===== */
+@media (max-width: 768px) {
+  .admin-form {
+    padding: 16px;
+  }
+  
+  .admin-form input,
+  .admin-form textarea {
+    font-size: 16px; /* Предотвращает зум на мобильных */
+  }
+  
+  .admin-form button {
+    width: 100%;
+    margin: 6px 0;
+    justify-content: center;
+  }
+  
+  .edit-form .form-actions {
+    flex-direction: column;
+  }
+  
+  .edit-form .form-actions button {
+    width: 100%;
+  }
+  
+  /* Для длинных заголовков на мобильных */
+  .admin-form input[name="title"] {
+    white-space: normal;
+    word-wrap: break-word;
+    overflow: visible;
+  }
+}
+
+/* ===== СТРАНИЦА ВХОДА В АДМИНКУ ===== */
+.admin-login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000000;
+}
+
+.login-box {
+  background: #1A1A1A;
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid #2C2C2C;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-box h1 {
+  color: #FFD700;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.login-box label {
   display: block;
+  color: #E0E0E0;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 12px 16px;
+  background: #0A0A0A;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #E0E0E0;
+  font-size: 16px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.login-box input[type="password"]:focus {
+  outline: none;
+  border-color: #FFD700;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: #FFD700;
+  color: #000000;
+  border: none;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.login-box button:hover {
+  background: #F59A2F;
+}
+
+.login-box .error {
+  color: #DC3545;
+  background: #DC354522;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 1px solid #DC3545;
+}
+
+/* ===== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ===== */
+
+/* Для длинных слов */
+.break-word {
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Скрытие элементов */
+.hidden {
+  display: none;
 }

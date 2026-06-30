@@ -6,7 +6,7 @@
     <div class="article-card">
       <h2><a href="/article/<%= article.id %>"><%= article.title %></a></h2>
       <% if (article.image_url) { %>
-        <img src="<%= article.image_url %>" alt="<%= article.title %>" class="article-preview">
+        <img src="<%= article.image_url %>" alt="<%= article.title %>" class="article-preview" loading="lazy">
       <% } %>
     </div>
   <% }) %>
