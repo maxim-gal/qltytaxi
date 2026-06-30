@@ -48,7 +48,6 @@
     <button type="submit">Добавить</button>
   </form>
   
-  <!-- Остальной код для списка статей -->
   <% if (articles.length) { %>
     <h3>Список статей</h3>
     <% articles.forEach(article => { %>
@@ -71,14 +70,8 @@
     <label>О проекте (текст):</label>
     <textarea name="about_text"><%= settings.about_text %></textarea>
 
-    <label>Изображение для «О проекте» (URL):</label>
-    <input name="about_image" value="<%= settings.about_image || '' %>" placeholder="https://...">
-
     <label>Контакты (текст):</label>
     <textarea name="contacts_text"><%= settings.contacts_text %></textarea>
-
-    <label>Изображение для «Контакты» (URL):</label>
-    <input name="contacts_image" value="<%= settings.contacts_image || '' %>" placeholder="https://...">
 
     <label>Email контактов:</label>
     <input name="contacts_email" value="<%= settings.contacts_email %>">
@@ -86,6 +79,5 @@
     <button type="submit">Сохранить настройки</button>
   </form>
 </section>
-
 
 <%- include('../partials/footer') %>

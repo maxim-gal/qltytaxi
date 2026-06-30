@@ -14,7 +14,10 @@ router.get('/taxi/:id', async (req, res) => {
 
 router.get('/about', async (req, res) => {
   const settings = await req.db.getAsync('SELECT * FROM settings WHERE id = 1');
-  res.render('about', { title: 'О проекте', about_text: settings.about_text });
+  res.render('about', { 
+    title: 'О проекте', 
+    about_text: settings.about_text 
+  });
 });
 
 router.get('/contacts', async (req, res) => {

@@ -11,6 +11,9 @@ body {
   background-color: #000000;
   color: #E0E0E0;
   line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* страница всегда на всю высоту окна */
 }
 
 a {
@@ -27,6 +30,7 @@ a:hover {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;
+  flex: 1 0 auto;
 }
 
 /* ===== Шапка ===== */
@@ -108,7 +112,6 @@ a:hover {
 .taxi-list .col-cost,
 .taxi-list .col-class {
   flex: 1.5;
-  color: #bbb;
 }
 
 .taxi-list .col-phone {
@@ -158,6 +161,7 @@ a:hover {
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 20px;
+  flex-shrink: 0;
 }
 
 .footer-links a {

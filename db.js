@@ -49,15 +49,15 @@ async function initDB() {
     )
   `);
 
-  // Миграция: добавляем столбцы about_image и contacts_image, если их ещё нет
-  const tableInfo = db.exec("PRAGMA table_info('settings')")[0]?.values || [];
-  const columnNames = tableInfo.map(row => row[1]); // row[1] — имя столбца
-  if (!columnNames.includes('about_image')) {
-    db.run("ALTER TABLE settings ADD COLUMN about_image TEXT");
-  }
-  if (!columnNames.includes('contacts_image')) {
-    db.run("ALTER TABLE settings ADD COLUMN contacts_image TEXT");
-  }
+// Миграция
+const tableInfo = db.exec("PRAGMA table_info('settings')")[0]?.values || [];
+const columnNames = tableInfo.map(row => row[1]);
+if (!columnNames.includes('about_image')) {
+  db.run("ALTER TABLE settings ADD COLUMN about_image TEXT");
+}
+if (!columnNames.includes('contacts_image')) {
+  db.run("ALTER TABLE settings ADD COLUMN contacts_image TEXT");
+}
 
   // Начальные данные для такси
   const taxiCount = db.exec('SELECT COUNT(*) AS cnt FROM taxis')[0]?.values[0][0];
@@ -97,21 +97,19 @@ async function initDB() {
     );
   }
 
-  // Начальные настройки (с картинками)
-  const settingsExists = db.exec('SELECT COUNT(*) AS cnt FROM settings')[0]?.values[0][0];
-  if (!settingsExists) {
-    db.run(
-      `INSERT INTO settings (id, about_text, contacts_text, contacts_email, about_image, contacts_image)
-       VALUES (1, ?, ?, ?, ?, ?)`,
-      [
-        'Мы собрали лучшие таксопарки города. Все данные актуальны.',
-        'Свяжитесь с нами по email или через форму.',
-        'info@taxi-city.ru',
-        '',   // about_image — пока пусто
-        ''    // contacts_image — пока пусто
-      ]
-    );
-  }
+// Начальные настройки 
+const settingsExists = db.exec('SELECT COUNT(*) AS cnt FROM settings')[0]?.values[0][0];
+if (!settingsExists) {
+  db.run(
+    `INSERT INTO settings (id, about_text, contacts_text, contacts_email)
+     VALUES (1, ?, ?, ?)`,
+    [
+      'Мы собрали лучшие таксопарки города. Все данные актуальны.',
+      'Свяжитесь с нами по email или через форму.',
+      'info@taxi-city.ru'
+    ]
+  );
+}
 
   // Сохраняем базу на диск
   saveDB(db);
