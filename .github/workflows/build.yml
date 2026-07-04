@@ -18,12 +18,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Если есть тесты, можно добавить их сюда:
-      # - name: Run tests
-      #   run: npm test
-
+      # Устанавливаем Qlty CLI и добавляем его в PATH
       - name: Install Qlty CLI
-        run: curl -fsSL https://qlty.sh | bash
+        run: |
+          curl -fsSL https://qlty.sh | bash
+          echo "$HOME/.qlty/bin" >> $GITHUB_PATH
 
+      # Теперь qlty должен быть доступен
       - name: Run Qlty quality check
         run: qlty check
