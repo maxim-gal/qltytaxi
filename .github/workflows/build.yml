@@ -27,4 +27,5 @@ jobs:
         run: qlty init --yes
 
       - name: Run Qlty quality check
-        run: qlty check || true   # <-- здесь явно добавлено || true
+        continue-on-error: true
+        run: qlty check
