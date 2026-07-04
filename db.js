@@ -49,16 +49,6 @@ async function initDB() {
     )
   `);
 
-// Миграция
-const tableInfo = db.exec("PRAGMA table_info('settings')")[0]?.values || [];
-const columnNames = tableInfo.map(row => row[1]);
-if (!columnNames.includes('about_image')) {
-  db.run("ALTER TABLE settings ADD COLUMN about_image TEXT");
-}
-if (!columnNames.includes('contacts_image')) {
-  db.run("ALTER TABLE settings ADD COLUMN contacts_image TEXT");
-}
-
   // Начальные данные для такси
   const taxiCount = db.exec('SELECT COUNT(*) AS cnt FROM taxis')[0]?.values[0][0];
   if (!taxiCount) {

@@ -1,19 +1,24 @@
 <%- include('../partials/head') %>
 
-<article class="article-full">
-  <h1><%= article.title %></h1>
-  
-  <% if (article.image_url) { %>
-    <div class="article-image-wrapper">
-      <img src="<%= article.image_url %>" alt="<%= article.title %>" class="article-image" loading="lazy">
+<section class="features py-5">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <% if (article.image_url) { %>
+        <div class="col-md-6">
+          <img src="<%= article.image_url %>" class="img-fluid rounded-4" alt="<%= article.title %>">
+        </div>
+      <% } %>
+      <div class="<%= article.image_url ? 'col-md-6' : 'col-12' %>">
+        <h1 class="text-warning mb-4"><%= article.title %></h1>
+        <div class="article-text">
+          <%- article.content %>
+        </div>
+        <a href="/articles" class="btn btn-outline-warning mt-4">
+          <i class="fas fa-arrow-left me-2"></i>Все статьи
+        </a>
+      </div>
     </div>
-  <% } %>
-  
-  <div class="article-text">
-    <%= article.content %>
   </div>
-  
-  <a href="/articles" class="back-link">← Все статьи</a>
-</article>
+</section>
 
 <%- include('../partials/footer') %>

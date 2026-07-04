@@ -1,15 +1,49 @@
   </main>
-  <footer class="site-footer">
+  <footer class="bg-dark text-light pt-5 pb-4 mt-5">
     <div class="container">
-      <div class="footer-links">
-        <a href="/about">О проекте</a>
-        <a href="/contacts">Контакты</a>
-        <a href="/articles">Статьи</a>
+      <div class="row">
+        <!-- TaxiList – полная ширина на мобильных, широкая на десктопе -->
+        <div class="col-12 col-lg-5 mb-4">
+          <h5 class="text-warning"><i class="fas fa-taxi me-2"></i>TaxiList</h5>
+          <p class="small">Проверенные таксопарки вашего города. Все контакты актуальны.</p>
+        </div>
+
+        <!-- Ссылки – на мобильных половинная ширина, на десктопе узкая -->
+        <div class="col-6 col-lg-3 mb-4">
+          <h5 class="text-warning">Ссылки</h5>
+          <ul class="list-unstyled">
+            <li><a href="/about" class="text-light text-decoration-none">О проекте</a></li>
+            <li><a href="/contacts" class="text-light text-decoration-none">Контакты</a></li>
+            <li><a href="/articles" class="text-light text-decoration-none">Статьи</a></li>
+          </ul>
+        </div>
+
+        <!-- Связаться – на мобильных половинная ширина, на десктопе обычная -->
+        <div class="col-6 col-lg-4 mb-4">
+          <h5 class="text-warning">Связаться</h5>
+          <ul class="list-unstyled small">
+            <li class="mb-2">
+              <i class="fas fa-map-marker-alt text-warning me-2"></i>
+              Россия, Санкт-Петербург
+            </li>
+            <li class="mb-2">
+              <i class="fas fa-phone text-warning me-2"></i>
+              +7 (XXX) XXX-XX-XX
+            </li>
+            <li>
+              <i class="fas fa-envelope text-warning me-2"></i>
+              <a href="mailto:info@taxi-city.ru" class="text-light">info@taxi-city.ru</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="copyright">
-        © 2026 Список Такси Города — надёжные таксопарки
+      <hr class="border-secondary">
+      <div class="text-center small">
+        &copy; 2026 Список Такси Города
       </div>
     </div>
-  </footer>
+   </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

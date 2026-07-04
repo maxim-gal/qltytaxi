@@ -1,0 +1,229 @@
+/* === Стили только для админ-панели === */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #E0E0E0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  padding: 20px;
+}
+
+.admin-form {
+  background: #1A1A1A;
+  border: 1px solid #2C2C2C;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 16px 0;
+}
+
+.admin-form h3 {
+  color: #FFD700;
+  margin-bottom: 16px;
+  font-size: 1.1rem;
+}
+
+.admin-form input,
+.admin-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  margin: 6px 0;
+  background: #0A0A0A;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #E0E0E0;
+  font-size: 14px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  outline: none;
+  border-color: #FFD700;
+}
+
+.admin-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.admin-form button,
+.admin-form .btn {
+  background: #FFD700;
+  color: #000;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin: 8px 8px 0 0;
+  font-family: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.admin-form button:hover,
+.admin-form .btn:hover {
+  background: #F59A2F;
+}
+
+.btn-delete {
+  background: #DC3545 !important;
+  color: #fff !important;
+}
+
+.btn-delete:hover {
+  background: #C82333 !important;
+}
+
+.add-form {
+  border: 2px dashed rgba(255, 215, 0, 0.2);
+}
+
+.edit-form {
+  margin: 12px 0;
+  padding: 16px 20px;
+}
+
+section {
+  margin: 40px 0;
+}
+
+section h2 {
+  color: #FFD700;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #222;
+  padding-bottom: 12px;
+}
+
+section h3 {
+  color: #FFD700;
+  font-size: 1.1rem;
+  margin: 16px 0;
+}
+
+a[href="/admin/logout"] {
+  display: inline-block;
+  background: #DC3545;
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 40px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+a[href="/admin/logout"]:hover {
+  background: #C82333;
+}
+
+/* Страница входа */
+.admin-login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-box {
+  background: #1A1A1A;
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid #2C2C2C;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-box h1 {
+  color: #FFD700;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.login-box label {
+  display: block;
+  color: #E0E0E0;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 12px 16px;
+  background: #0A0A0A;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #E0E0E0;
+  font-size: 16px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.login-box input[type="password"]:focus {
+  outline: none;
+  border-color: #FFD700;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  background: #FFD700;
+  color: #000;
+  border: none;
+  border-radius: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: inherit;
+}
+
+.login-box button:hover {
+  background: #F59A2F;
+}
+
+.login-box .error {
+  color: #DC3545;
+  background: #DC354522;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  border: 1px solid #DC3545;
+}
+
+/* Адаптив для админки */
+@media (max-width: 768px) {
+  .admin-form {
+    padding: 16px;
+  }
+  
+  .admin-form input,
+  .admin-form textarea {
+    font-size: 16px;
+  }
+  
+  .admin-form button {
+    width: 100%;
+    margin: 6px 0;
+  }
+  
+  .edit-form .form-actions {
+    flex-direction: column;
+  }
+  
+  .edit-form .form-actions button {
+    width: 100%;
+  }
+}

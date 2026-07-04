@@ -1,692 +1,134 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --bs-body-bg: #000;
+  --bs-body-color: #E0E0E0;
+  --bs-primary: #FFD700;
+  --bs-warning: #FFD700;
+  --bs-dark: #0A0A0A;
+  --bs-gray-800: #1A1A1A;
+  --bs-border-color: #333;
 }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, sans-serif;
-  background-color: #000000;
+  background-color: #000;
   color: #E0E0E0;
-  line-height: 1.4;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* страница всегда на всю высоту окна */
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-a {
-  color: #E0E0E0;
-  text-decoration: none;
-  transition: color 0.2s;
+/* Навбар */
+.navbar-dark .navbar-nav .nav-link {
+  color: rgba(255,255,255,0.7);
 }
-
-a:hover {
+.navbar-dark .navbar-nav .nav-link:hover {
   color: #FFD700;
 }
 
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 20px;
-  flex: 1 0 auto;
+/* Карточки такси (Pricing) */
+.pricing .section-title h2 {
+  color: #FFD700;
+  font-weight: 700;
+  margin-bottom: 2rem;
 }
 
-/* ===== Шапка ===== */
-.site-header {
+.pricing-item {
+  background: #1A1A1A;
+  border: 1px solid #333;
+  border-radius: 1rem;
+  padding: 2rem 1.5rem;
   text-align: center;
-  border-bottom: 1px solid #222;
-  padding: 16px 0 12px;
-  background-color: #000000;
+  transition: transform 0.2s;
 }
-
-.logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.8rem;
-  font-weight: 800;
-  text-decoration: none;
+.pricing-item:hover {
+  transform: translateY(-4px);
+  border-color: #FFD700;
+}
+.pricing-item h3 {
   color: #FFD700;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
-
-.logo i {
-  font-size: 2rem;
-  color: #FFD700;
-}
-
-/* ===== Компактный баннер ===== */
-.banner {
-  background: linear-gradient(97deg, #FFD700 0%, #F59A2F 100%);
-  color: #000000;
-  padding: 16px 20px;
-  margin: 16px 0 28px;
-  border-radius: 16px;
-  text-align: center;
-}
-
-.banner h1 {
-  font-size: 1.3rem;
-  font-weight: 800;
-}
-
-.banner p {
-  font-size: 0.9rem;
-  font-weight: 500;
-  opacity: 0.9;
-}
-
-/* ===== Вертикальный список такси ===== */
-.taxi-list {
-  margin-bottom: 40px;
-}
-
-.taxi-list .list-header {
-  display: flex;
-  padding: 12px 0;
-  border-bottom: 1px solid #333;
-  color: #FFD700;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-.taxi-list .list-row {
-  display: flex;
-  align-items: center;
-  padding: 12px 0;
-  border-bottom: 1px solid #222;
-  font-size: 0.95rem;
-}
-
-.taxi-list .list-row:last-child {
-  border-bottom: none;
-}
-
-.taxi-list .col-name {
-  flex: 2;
-  font-weight: 500;
-}
-
-.taxi-list .col-podacha,
-.taxi-list .col-cost,
-.taxi-list .col-class {
-  flex: 1.5;
-}
-
-.taxi-list .col-phone {
-  flex: 1.2;
-  text-align: center;
-}
-
-/* Заголовок "Телефон" – слева */
-.taxi-list .list-header .col-phone {
+.pricing-item ul {
+  list-style: none;
+  padding-left: 0;
   text-align: left;
 }
+.pricing-item ul li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #2A2A2A;
+}
 
-.taxi-list .btn-phone {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  background-color: #FFD700;
-  color: #000000;
+/* Кнопка телефона */
+.btn-phone {
+  background: #FFD700;
+  color: #000;
   font-weight: 700;
-  padding: 8px 16px;
-  border-radius: 40px;
-  text-decoration: none;
-  font-size: 0.9rem;
+  border-radius: 50px;
+  padding: 0.6rem 1.5rem;
   transition: background 0.2s;
-  width: 200px;
-  box-sizing: border-box;
-}
-
-.taxi-list .btn-phone:hover {
-  background-color: #F59A2F;
-  color: #000000;
-}
-
-/* ===== Подвал ===== */
-.site-footer {
-  background-color: #000000;
-  border-top: 1px solid #222;
-  padding: 48px 0 32px;
-  margin-top: 20px;
-  text-align: center;
-}
-
-.footer-links {
-  display: flex;
-  gap: 48px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 20px;
-  flex-shrink: 0;
-}
-
-.footer-links a {
-  color: #9E9E9E;
-  font-weight: 500;
-}
-
-.footer-links a:hover {
-  color: #FFD700;
-}
-
-.copyright {
-  font-size: 0.8rem;
-  color: #6C6C6C;
-}
-
-/* ===== Детальная страница такси ===== */
-.taxi-detail {
-  background: #1A1A1A;
-  border-radius: 24px;
-  padding: 32px;
-  margin-top: 20px;
-}
-
-.taxi-detail h1 {
-  font-size: 2rem;
-  color: #FFD700;
-  margin-bottom: 24px;
-}
-
-.taxi-detail .detail-info p {
-  margin-bottom: 16px;
-  font-size: 1.1rem;
-}
-
-.taxi-detail .btn-phone {
-  margin-top: 24px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background-color: #FFD700;
-  color: #000000;
-  font-weight: 700;
-  padding: 14px 24px;
-  border-radius: 60px;
   text-decoration: none;
-  transition: background 0.2s;
-}
-
-.taxi-detail .btn-phone:hover {
-  background-color: #F59A2F;
-}
-
-.back-link {
   display: inline-block;
-  margin-top: 24px;
+}
+.btn-phone:hover {
+  background: #F59A2F;
+  color: #000;
+}
+
+/* Секция статей (Services) */
+.services .section-title h2 {
   color: #FFD700;
-  font-weight: 500;
+  font-weight: 700;
+  margin-bottom: 2rem;
 }
-
-/* ===== Статьи ===== */
-.articles-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-  margin-top: 24px;
-}
-
-.article-card {
+.service-item {
   background: #1A1A1A;
-  border-radius: 24px;
-  padding: 24px;
-  border: 1px solid #2C2C2C;
-}
-
-.article-card h2 {
-  font-size: 1.3rem;
-}
-
-.article-card h2 a {
-  color: #E0E0E0;
+  border: 1px solid #333;
+  border-radius: 1rem;
+  padding: 2rem;
   text-decoration: none;
+  color: #E0E0E0;
+  display: block;
+  transition: border-color 0.2s, transform 0.2s;
 }
-
-.article-card h2 a:hover {
+.service-item:hover {
+  border-color: #FFD700;
+  transform: translateY(-4px);
+  color: #E0E0E0;
+}
+.service-item .icon {
   color: #FFD700;
 }
+.service-item h4 {
+  color: #fff;
+  margin: 1rem 0 0.5rem;
+}
 
-.article-full {
+/* Страница статьи (Features) */
+.features img {
+  border: 1px solid #333;
   background: #1A1A1A;
-  border-radius: 24px;
-  padding: 32px;
-  margin-top: 24px;
 }
-
-.article-full h1 {
-  color: #FFD700;
-  margin-bottom: 20px;
-}
-
 .article-text {
+  color: #E0E0E0;
   line-height: 1.8;
-  font-size: 1.05rem;
+}
+.article-text h1, .article-text h2 {
+  color: #FFD700;
+  margin-top: 1.5rem;
 }
 
-.article-text p {
-  margin-bottom: 16px;
-}
-
-/* ===== Изображения в статьях ===== */
-.article-preview {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-top: 12px;
-  background: #0A0A0A;
-}
-
-.article-full img,
-.article-card img {
-  max-width: 100%;
-  max-height: 400px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 12px;
-  display: block;
-  background: #0A0A0A;
-}
-
-.article-card .article-preview {
-  max-height: 200px;
-  object-fit: cover;
-}
-
-.article-image-wrapper {
-  width: 100%;
-  max-height: 400px;
-  overflow: hidden;
-  border-radius: 12px;
-  margin: 20px 0;
-  background: #0A0A0A;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.article-image-wrapper .article-image {
-  width: 100%;
-  height: 100%;
-  max-height: 400px;
-  object-fit: contain;
-  display: block;
-}
-
-/* ===== "О проекте" и "Контакты" ===== */
+/* Страницы about/contacts */
 .content-block {
   background: #1A1A1A;
-  border-radius: 24px;
-  padding: 32px;
-  margin-top: 24px;
-  font-size: 1.1rem;
-  line-height: 1.6;
+  border-radius: 1rem;
+  padding: 2rem;
+  margin-top: 1.5rem;
 }
-
-.content-block p {
-  margin-bottom: 16px;
-}
-
-.content-block a {
+.content-block h1 {
   color: #FFD700;
 }
 
-.content-block a:hover {
-  color: #F59A2F;
-}
-
-.content-image {
-  max-width: 100%;
-  max-height: 400px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border-radius: 16px;
-  margin-bottom: 24px;
-  display: block;
-  background: #0A0A0A;
-}
-
-/* ===== Адаптив ===== */
+/* Адаптивность */
 @media (max-width: 768px) {
-  .taxi-list .list-header {
-    display: none;
+  .pricing-item, .service-item {
+    margin-bottom: 1.5rem;
   }
-
-  .taxi-list .list-row {
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 16px 0;
-  }
-
-  .taxi-list .col-name {
-    flex: 100%;
-    margin-bottom: 6px;
-    font-size: 1.1rem;
-  }
-
-  .taxi-list .col-podacha,
-  .taxi-list .col-cost,
-  .taxi-list .col-class {
-    flex: 1 1 30%;
-    font-size: 0.85rem;
-  }
-
-  .taxi-list .col-phone {
-    flex: 100%;
-    text-align: left;
-    margin-top: 8px;
-  }
-
-  .taxi-list .btn-phone {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .footer-links {
-    flex-direction: row;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .footer-links a {
-    font-size: 0.9rem;
-  }
-
-  /* Адаптив для изображений */
-  .article-full img,
-  .article-card img {
-    max-height: 250px;
-  }
-  
-  .article-image-wrapper {
-    max-height: 250px;
-  }
-  
-  .content-image {
-    max-height: 200px;
-  }
-
-  .article-full {
-    padding: 20px;
-  }
-
-  .content-block {
-    padding: 20px;
-  }
-}
-
-/* ===== АДМИН-ПАНЕЛЬ ===== */
-
-/* Общие стили для форм в админке */
-.admin-form {
-  background: #1A1A1A;
-  border-radius: 16px;
-  padding: 24px;
-  margin: 16px 0;
-  border: 1px solid #2C2C2C;
-}
-
-.admin-form h3 {
-  color: #FFD700;
-  margin-bottom: 16px;
-  font-size: 1.1rem;
-}
-
-.admin-form input,
-.admin-form textarea {
-  width: 100%;
-  padding: 10px 14px;
-  margin: 6px 0;
-  background: #0A0A0A;
-  border: 1px solid #333;
-  border-radius: 8px;
-  color: #E0E0E0;
-  font-size: 14px;
-  font-family: 'Inter', system-ui, sans-serif;
-  transition: border-color 0.2s;
-  box-sizing: border-box;
-}
-
-.admin-form input:focus,
-.admin-form textarea:focus {
-  outline: none;
-  border-color: #FFD700;
-}
-
-.admin-form textarea {
-  min-height: 100px;
-  resize: vertical;
-}
-
-/* Решение проблемы с длинными заголовками */
-.admin-form input[name="title"] {
-  font-weight: 500;
-  font-size: 15px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Для полей ввода в списке статей */
-.admin-form .edit-form input[name="title"] {
-  background: #0A0A0A;
-  border-color: #2C2C2C;
-}
-
-.admin-form .edit-form input[name="title"]:focus {
-  border-color: #FFD700;
-}
-
-/* Кнопки в админке */
-.admin-form button {
-  background: #FFD700;
-  color: #000000;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 40px;
-  font-weight: 700;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.2s;
-  margin: 8px 8px 0 0;
-  font-family: 'Inter', system-ui, sans-serif;
-}
-
-.admin-form button:hover {
-  background: #F59A2F;
-}
-
-.btn-delete {
-  background: #DC3545 !important;
-  color: white !important;
-}
-
-.btn-delete:hover {
-  background: #C82333 !important;
-}
-
-/* Форма "Добавить" - выделяем */
-.add-form {
-  border: 2px dashed #FFD70033;
-  background: #0A0A0A;
-}
-
-/* Форма "Редактировать" */
-.edit-form {
-  margin: 12px 0;
-  padding: 16px 20px;
-}
-
-/* Группа кнопок в форме редактирования */
-.edit-form .form-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-top: 8px;
-}
-
-/* Стили для секций в админке */
-section {
-  margin: 40px 0;
-}
-
-section h2 {
-  color: #FFD700;
-  font-size: 1.6rem;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #222;
-  padding-bottom: 12px;
-}
-
-section h3 {
-  color: #FFD700;
-  font-size: 1.1rem;
-  margin: 16px 0;
-}
-
-/* Ссылка "Выйти" */
-a[href="/admin/logout"] {
-  display: inline-block;
-  background: #DC3545;
-  color: white;
-  padding: 8px 20px;
-  border-radius: 40px;
-  font-weight: 600;
-  margin-bottom: 20px;
-  transition: background 0.2s;
-}
-
-a[href="/admin/logout"]:hover {
-  background: #C82333;
-  color: white;
-}
-
-/* ===== АДАПТИВ ДЛЯ АДМИНКИ ===== */
-@media (max-width: 768px) {
-  .admin-form {
-    padding: 16px;
-  }
-  
-  .admin-form input,
-  .admin-form textarea {
-    font-size: 16px; /* Предотвращает зум на мобильных */
-  }
-  
-  .admin-form button {
-    width: 100%;
-    margin: 6px 0;
-    justify-content: center;
-  }
-  
-  .edit-form .form-actions {
-    flex-direction: column;
-  }
-  
-  .edit-form .form-actions button {
-    width: 100%;
-  }
-  
-  /* Для длинных заголовков на мобильных */
-  .admin-form input[name="title"] {
-    white-space: normal;
-    word-wrap: break-word;
-    overflow: visible;
-  }
-}
-
-/* ===== СТРАНИЦА ВХОДА В АДМИНКУ ===== */
-.admin-login-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: #000000;
-}
-
-.login-box {
-  background: #1A1A1A;
-  padding: 40px;
-  border-radius: 24px;
-  border: 1px solid #2C2C2C;
-  width: 100%;
-  max-width: 400px;
-}
-
-.login-box h1 {
-  color: #FFD700;
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2rem;
-}
-
-.login-box label {
-  display: block;
-  color: #E0E0E0;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
-
-.login-box input[type="password"] {
-  width: 100%;
-  padding: 12px 16px;
-  background: #0A0A0A;
-  border: 1px solid #333;
-  border-radius: 8px;
-  color: #E0E0E0;
-  font-size: 16px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-}
-
-.login-box input[type="password"]:focus {
-  outline: none;
-  border-color: #FFD700;
-}
-
-.login-box button {
-  width: 100%;
-  padding: 12px;
-  background: #FFD700;
-  color: #000000;
-  border: none;
-  border-radius: 40px;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s;
-  font-family: 'Inter', system-ui, sans-serif;
-}
-
-.login-box button:hover {
-  background: #F59A2F;
-}
-
-.login-box .error {
-  color: #DC3545;
-  background: #DC354522;
-  padding: 12px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  text-align: center;
-  border: 1px solid #DC3545;
-}
-
-/* ===== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ===== */
-
-/* Для длинных слов */
-.break-word {
-  word-wrap: break-word;
-  word-break: break-word;
-}
-
-/* Скрытие элементов */
-.hidden {
-  display: none;
 }

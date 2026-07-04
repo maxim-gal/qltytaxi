@@ -1,30 +1,34 @@
 <%- include('../partials/head') %>
 
-<div class="taxi-list">
-  <% if (taxis.length) { %>
-    <div class="list-header">
-      <span class="col-name">Название</span>
-      <span class="col-podacha">Подача</span>
-      <span class="col-cost">Стоимость</span>
-      <span class="col-class">Класс</span>
-      <span class="col-phone">Телефон</span>
+<!-- Таксопарки (Pricing) -->
+<section class="pricing py-5">
+  <div class="container">
+    <div class="section-title text-center mb-5">
+      <h2>Таксопарки города</h2>
+      <p class="text-secondary">Проверенные перевозчики с быстрой подачей</p>
     </div>
-  <% } %>
-  <% taxis.forEach(taxi => { %>
-    <div class="list-row">
-      <span class="col-name"><a href="/taxi/<%= taxi.id %>"><%= taxi.name %></a></span>
-      <span class="col-podacha"><%= taxi.podacha || '' %></span>
-      <span class="col-cost"><%= taxi.cost || '' %></span>
-      <span class="col-class"><%= taxi.class || '' %></span>
-      <span class="col-phone">
-        <% if (taxi.phone) { %>
-          <a href="tel:<%= taxi.phone.replace(/[^+\d]/g, '') %>" class="btn-phone">
-            <i class="fas fa-phone-alt"></i> <%= taxi.phone %>
-          </a>
-        <% } %>
-      </span>
+    <div class="row g-4">
+      <% taxis.forEach(taxi => { %>
+        <div class="col-lg-4 col-md-6">
+          <div class="pricing-item">
+            <h3><a href="/taxi/<%= taxi.id %>" class="text-warning text-decoration-none"><%= taxi.name %></a></h3>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-clock text-warning me-2"></i><strong>Подача:</strong> <%= taxi.podacha || '—' %></li>
+              <li><i class="fas fa-ruble-sign text-warning me-2"></i><strong>Стоимость:</strong> <%= taxi.cost || '—' %></li>
+              <li><i class="fas fa-star text-warning me-2"></i><strong>Класс:</strong> <%= taxi.class || '—' %></li>
+            </ul>
+            <% if (taxi.phone) { %>
+              <div class="mt-4">
+                <a href="tel:<%= taxi.phone.replace(/[^+\d]/g, '') %>" class="btn-phone">
+                  <i class="fas fa-phone-alt me-2"></i><%= taxi.phone %>
+                </a>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      <% }) %>
     </div>
-  <% }) %>
-</div>
+  </div>
+</section>
 
 <%- include('../partials/footer') %>

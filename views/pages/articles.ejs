@@ -1,19 +1,29 @@
 <%- include('../partials/head') %>
 
-<h1>Статьи</h1>
-<div class="articles-list">
-  <% articles.forEach(article => { %>
-    <div class="article-card">
-      <h2><a href="/article/<%= article.id %>"><%= article.title %></a></h2>
-      <% if (article.image_url) { %>
-        <img src="<%= article.image_url %>" alt="<%= article.title %>" class="article-preview" loading="lazy">
-      <% } %>
+<section class="services py-5">
+  <div class="container">
+    <div class="section-title text-center mb-5">
+      <h2>Статьи</h2>
     </div>
-  <% }) %>
-</div>
-<h1>Статьи</h1>
-<a href="/" class="back-link">← На главную</a>
-<div class="articles-list">
-  <!-- ... -->
-</div>
+    <div class="row g-4">
+      <% articles.forEach(article => { %>
+        <div class="col-lg-4 col-md-6">
+          <a href="/article/<%= article.id %>" class="service-item">
+            <% if (article.image_url) { %>
+              <img src="<%= article.image_url %>" alt="<%= article.title %>" class="img-fluid rounded mb-3" style="height: 200px; width: 100%; object-fit: cover;">
+            <% } else { %>
+              <div class="icon"><i class="fas fa-newspaper fa-3x"></i></div>
+            <% } %>
+            <h4><%= article.title %></h4>
+            <p class="text-secondary"><%= article.content.replace(/<\/?[^>]+(>|$)/g, "").substring(0, 120) %>...</p>
+          </a>
+        </div>
+      <% }) %>
+    </div>
+    <div class="text-center mt-5">
+      <a href="/" class="btn btn-outline-warning"><i class="fas fa-arrow-left me-2"></i>На главную</a>
+    </div>
+  </div>
+</section>
+
 <%- include('../partials/footer') %>
