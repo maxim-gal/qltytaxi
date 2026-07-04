@@ -26,6 +26,6 @@ jobs:
       - name: Initialize Qlty
         run: qlty init --yes
 
-      # ВАЖНО: добавляем `|| true`, чтобы сборка не падала из-за найденных проблем
       - name: Run Qlty quality check
-        run: qlty check || true
+        continue-on-error: true          # <- это ключевое изменение
+        run: qlty check
