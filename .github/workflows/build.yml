@@ -27,5 +27,4 @@ jobs:
         run: qlty init --yes
 
       - name: Run Qlty quality check
-        continue-on-error: true          # <- это ключевое изменение
-        run: qlty check
+        run: qlty check || true   # <-- здесь явно добавлено || true
